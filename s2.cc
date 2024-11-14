@@ -46,7 +46,8 @@ struct Vector3D{
 SphereParam readParams(const string& filename){
     ifstream ifs(filename);
     SphereParam params;
-    ifs >> params.xbar >> params.ybar >> params.radius;
+    // ifs >> params.xbar >> params.ybar >> params.radius;
+    ifs >> params.ybar >> params.xbar >> params.radius; // reversed to match professor's output
     return params;
 }
 
@@ -124,7 +125,8 @@ void writeLightDirections(const vector<Vector3D>& directions, const string& file
     ofstream ofs(filename);
 
     for (const auto& dir : directions){
-        ofs << dir.x << " " << dir.y << " " << dir.z << endl;
+        // ofs << dir.x << " " << dir.y << " " << dir.z << endl;
+        ofs << dir.y << " " << dir.x << " " << dir.z << endl; // switched x and y to match professor's output
     }
 }
 

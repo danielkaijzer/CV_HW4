@@ -55,7 +55,7 @@ vector<Vector3D> readLightDirections(const string& filename){
     while (getline(ifs, line)) {
         istringstream iss(line);
         Vector3D dir;
-        iss >> dir.x >> dir.y >> dir.z;
+        iss >> dir.y >> dir.x >> dir.z;
         directions.push_back(dir);
     }
     

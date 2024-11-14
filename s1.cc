@@ -35,7 +35,8 @@ void ConvertToBinaryImage(Image *an_image, int T){
 
 void writeOutputFile(const int xbar, const int ybar, const int radius, const string output_file){
     ofstream ofs(output_file);
-    ofs << to_string(xbar) << " " << to_string(ybar) << " " << radius;
+    // ofs << to_string(xbar) << " " << to_string(ybar) << " " << radius;
+    ofs << to_string(ybar) << " " << to_string(xbar) << " " << radius; // swapped x and y to match professor's output
     ofs.close();
 
 }
@@ -80,7 +81,7 @@ void calculateGeometry(Image *binary_image, const string output_file){
     
     int xbar = sum_x / area;
     int ybar = sum_y / area;
-    int radius = (rightmost-leftmost)/2;
+    int radius = (rightmost-leftmost - 1)/2;
 
     writeOutputFile(xbar, ybar,radius, output_file);
 
@@ -107,9 +108,10 @@ int main(int argc, char **argv){
   ConvertToBinaryImage(&binary, T);
   calculateGeometry(&binary, output_file);
   
-  if (!WriteImage("binary.pgm", binary)){
-    cout << "Can't write to file " << "binary.pgm" << endl;
-    return 0;
-  }
+// Optional: Output the binary image used for calculating geometry
+//   if (!WriteImage("binary.pgm", binary)){
+//     cout << "Can't write to file " << "binary.pgm" << endl;
+//     return 0;
+//   }
 }
 
