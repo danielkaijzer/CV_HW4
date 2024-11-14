@@ -1,4 +1,6 @@
 /**
+ * Daniel Kaijzer
+ * 
  * Calculates position and radius of circle
  * This is accomplished by converting the input image to a binary image
  * then calculate the area of binary object, then centroid 
@@ -53,9 +55,11 @@ void calculateGeometry(Image *binary_image, const string output_file){
     // iterate through image
     for (int x = 0; x < rows; ++x){
         for (int y = 0; y < cols; ++y){
+
             int cur = binary_image->GetPixel(x,y);
 
-            if(cur == 0){continue;}
+            if(cur == 0){continue;} // skip background
+
             else{
                 // iterate area
                 area++;
@@ -78,7 +82,7 @@ void calculateGeometry(Image *binary_image, const string output_file){
     int ybar = sum_y / area;
     int radius = (rightmost-leftmost)/2;
 
-    writeOutputFile(xbar,ybar,radius, output_file);
+    writeOutputFile(xbar, ybar,radius, output_file);
 
 }
 
@@ -103,9 +107,9 @@ int main(int argc, char **argv){
   ConvertToBinaryImage(&binary, T);
   calculateGeometry(&binary, output_file);
   
-//   if (!WriteImage("binary.pgm", binary)){
-//     cout << "Can't write to file " << "binary.pgm" << endl;
-//     return 0;
-//   }
+  if (!WriteImage("binary.pgm", binary)){
+    cout << "Can't write to file " << "binary.pgm" << endl;
+    return 0;
+  }
 }
 
