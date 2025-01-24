@@ -14,6 +14,7 @@
  *      Scale the normal vector by the brightness value 
  *      all to determine light source direction and intensity
  * 3. Write three lines to output, each containing x,y,z of light source vector
+ * 
  */
 
 

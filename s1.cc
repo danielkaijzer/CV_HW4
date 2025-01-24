@@ -5,6 +5,7 @@
  * This is accomplished by converting the input image to a binary image
  * then calculate the area of binary object, then centroid 
  * radius = widest part of circle / 2
+ * 
  */
 
 #include <iostream>
